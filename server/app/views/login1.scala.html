@@ -1,10 +1,38 @@
-@()
+@(loginForm: Form[LoginData])(implicit request: MessagesRequestHeader, flash: Flash)
 
 @main("Login") {
-    <h2>Login</h2>
-
-    <form method="get" action="validateLogin1">
+    <h1>Login</h1>
+    
+    <form method="get" action="validateLoginGet1">
+        <h3>GET</h3>
         Username: <input type="text" name="username">
         Password: <input type="text" name="password">
+        <input type="submit"></input>
+    </form>
+    <br>
+    
+    <form method="post" action="@routes.TaskList1.validateLoginPost()">
+        @helper.CSRF.formField
+        <h3>POST</h3>
+        Username: <input type="text" name="username">
+        Password: <input type="text" name="password">
+        <input type="submit"></input>
+    </form>
+    <br>
+    @helper.form(action = routes.TaskList1.createUserForm()) {
+		@helper.CSRF.formField
+		<h3>Create User with Play Form</h3>
+		@helper.inputText(loginForm("Username"))
+		@helper.inputPassword(loginForm("Password"))
+		<div class="form-actions">
+			<button type="submit">Login</button>
+		</div>
+	}
+    
+    <form method="post" action="@routes.TaskList1.createUser()">
+        <h3>CREATE USER</h3>
+        Username: <input type="text" name="username">
+        Password: <input type="text" name="password">
+        <input type="submit"></input>
     </form>
 }
