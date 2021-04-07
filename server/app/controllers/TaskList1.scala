@@ -10,6 +10,7 @@ case class LoginData(username: String, password: String)
 
 @Singleton
 class TaskList1 @Inject()(cc: MessagesControllerComponents) extends MessagesAbstractController(cc) {
+  
   val loginForm = Form(mapping(
     "Username" -> text(3, 10),
     "Password" -> text(8)
@@ -34,16 +35,16 @@ class TaskList1 @Inject()(cc: MessagesControllerComponents) extends MessagesAbst
       }.getOrElse(Redirect(routes.TaskList1.login()))
     }
 
-     def createUserForm = Action { implicit request =>
-    loginForm.bindFromRequest().fold(
-      formWithErrors => BadRequest(views.html.login1(formWithErrors)),
-      ld =>
-        if (TaskListInMemoryModel.createUser(ld.username, ld.password)) {
-          Redirect(routes.TaskList1.taskList()).withSession("username" -> ld.username)
-        } else {
-          Redirect(routes.TaskList1.login()).flashing("error" -> "User creation failed.")
-        })
-  }
+    def createUserForm = Action { implicit request =>
+      loginForm.bindFromRequest().fold(
+        formWithErrors => BadRequest(views.html.login1(formWithErrors)),
+        ld =>
+          if (TaskListInMemoryModel.createUser(ld.username, ld.password)) {
+            Redirect(routes.TaskList1.taskList()).withSession("username" -> ld.username)
+          } else {
+            Redirect(routes.TaskList1.login()).flashing("error" -> "User creation failed.")
+          })
+    }
   
     def taskList = Action { implicit request =>
       val usernameOption = request.session.get("username")

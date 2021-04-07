@@ -3,16 +3,17 @@
 # ~~~~
 
 # Home page
-GET        /                             controllers.Application.index
+GET          /                             controllers.Application.index
 
-GET         /productArgs                controllers.Application.product(prodType, prodNum: Int)
-GET         /product/:prodType/:prodNum controllers.Application.product(prodType, prodNum: Int)
-GET         /productRE/$prodType<[a-z]{2}\d\d>/:prodNum controllers.Application.product(prodType, prodNum: Int)
+GET          /productArgs                controllers.Application.product(prodType, prodNum: Int)
+GET          /product/:prodType/:prodNum controllers.Application.product(prodType, prodNum: Int)
+GET          /productRE/$prodType<[a-z]{2}\d\d>/:prodNum controllers.Application.product(prodType, prodNum: Int)
 
-GET         /login1                       controllers.TaskList1.login
-GET         /validateLoginGet1            controllers.TaskList1.validateLoginGet(username, password)
+GET          /login1                       controllers.TaskList1.login
+GET          /validateLoginGet1            controllers.TaskList1.validateLoginGet(username, password)
 POST         /validateLoginPost1          controllers.TaskList1.validateLoginPost
 POST         /createUser1                 controllers.TaskList1.createUser
+POST         /createUserForm              controllers.TaskList1.createUserForm
 GET          /taskList1                   controllers.TaskList1.taskList
 GET          /logout1                     controllers.TaskList1.logout
 POST         /addTask1                    controllers.TaskList1.addTask
