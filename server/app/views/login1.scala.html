@@ -5,10 +5,10 @@
     
     <form method="get" action="validateLoginGet1">
         <h3>GET</h3>
-        Username: <input type="text" name="username"/>
-        <br>
-        Password: <input type="text" name="password"/>
-        <br>
+        Username: <input type="text" name="username"></input>
+        <br/>
+        Password: <input type="text" name="password"></input>
+        <br/>
         <input type="submit"></input>
     </form>
     <br>
@@ -16,10 +16,10 @@
     <form method="post" action="@routes.TaskList1.validateLoginPost()">
         @helper.CSRF.formField
         <h3>POST</h3>
-        Username: <input type="text" name="username" id="username-login"/>
-        <br>
-        Password: <input type="text" name="password" id="password-login"/>
-        <br>
+        Username: <input type="text" name="username" id="username-login"></input>
+        <br/>
+        Password: <input type="text" name="password" id="password-login"></input>
+        <br/>
         <input type="submit"></input>
     </form>
     <br>
@@ -36,10 +36,10 @@
     
     <form method="post" action="@routes.TaskList1.createUser()">
         <h3>CREATE USER</h3>
-        Username: <input type="text" name="username" id="username-create"/>
-        <br>
-        Password: <input type="text" name="password" id="password-create"/>
-        <br>
+        Username: <input type="text" name="username" id="username-create"></input>
+        <br/>
+        Password: <input type="text" name="password" id="password-create"></input>
+        <br/>
         <input type="submit"></input>
     </form>
 }
