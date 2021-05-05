@@ -2,8 +2,8 @@ package models
 import collection.mutable
 
 object TaskListInMemoryModel {
-    private val users = mutable.Map[String, String]("mark" -> "pass")
-    private val tasks = mutable.Map[String, List[String]]("mark" -> List("eat", "sleep", "code"))
+    private val users = mutable.Map[String, String]("mark" -> "pass", "a" -> "f")
+    private val tasks = mutable.Map[String, List[String]]("mark" -> List("eat", "sleep", "code"), "a" -> List("a", "b", "c"))
     
     def validateUser (username: String, password: String): Boolean = {
         users.get(username).map(_ == password).getOrElse(false)

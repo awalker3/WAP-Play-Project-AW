@@ -9,6 +9,7 @@ GET          /productArgs                controllers.Application.product(prodTyp
 GET          /product/:prodType/:prodNum controllers.Application.product(prodType, prodNum: Int)
 GET          /productRE/$prodType<[a-z]{2}\d\d>/:prodNum controllers.Application.product(prodType, prodNum: Int)
 
+# Version 1
 GET          /login1                       controllers.TaskList1.login
 GET          /validateLoginGet1            controllers.TaskList1.validateLoginGet(username, password)
 POST         /validateLoginPost1          controllers.TaskList1.validateLoginPost
@@ -19,6 +20,17 @@ GET          /logout1                     controllers.TaskList1.logout
 POST         /addTask1                    controllers.TaskList1.addTask
 POST         /deleteTask1                 controllers.TaskList1.deleteTask
 
+# Version 2
+GET          /load2                       controllers.TaskList2.load
+GET          /login2                      controllers.TaskList2.login
+GET          /logout2                     controllers.TaskList2.logout
++ nocsrf
+POST         /validate2                   controllers.TaskList2.validate
+GET          /create2                     controllers.TaskList2.createUser(username, password)
+GET          /deleteTask2                 controllers.TaskList2.deleteTask(index: Int)
+GET          /addTask2                    controllers.TaskList2.addTask(task)
+GET          /generatedJS                 controllers.TaskList2.generatedJS
+
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)
 GET        /versionedAssets/*file        controllers.Assets.versioned(path="/public", file: Asset)
@@ -26,3 +38,7 @@ GET        /versionedAssets/*file        controllers.Assets.versioned(path="/pub
 # Web Sockets
 GET   /chat             controllers.WebSocketChat.index
 GET   /chatSocket       controllers.WebSocketChat.socket
+
+# AJAX
+GET   /random                   controllers.Application.randomNumber
+GET   /randomString/:length     controllers.Application.randomString(length: Int)
